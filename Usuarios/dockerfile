@@ -1,0 +1,8 @@
+FROM nginx:1.27.2
+
+RUN apt-get update && apt-get -y upgrade
+RUN groupadd -r irvin && useradd -r -g irvin irvin
+RUN chown -R irvin:irvin /usr/share/nginx/html
+USER irvin
+
+CMD [ "bash", "-c","echo Hello from appuser" ]
